@@ -11,10 +11,18 @@ function App() {
     fetch('http://localhost:3001/pokemon')
       .then((response) => response.json())
       .then((pokemonData) => setShowPokemon(pokemonData));
-  });
+  }, []);
+
+  const searchPokemon = (name) => {
+    const filteredPokemon = showPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()));
+    setShowPokemon(filteredPokemon);
+  };
   return (
     <div className='App'>
-      <PokemonPage showPokemon={showPokemon} />
+      <PokemonPage
+        showPokemon={showPokemon}
+        searchPokemon={searchPokemon}
+      />
     </div>
   );
 }
