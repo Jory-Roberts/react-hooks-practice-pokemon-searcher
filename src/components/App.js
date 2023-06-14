@@ -17,11 +17,17 @@ function App() {
     const filteredPokemon = showPokemon.filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()));
     setShowPokemon(filteredPokemon);
   };
+
+  const addPokemon = (newPokemon) => {
+    setShowPokemon([...showPokemon, newPokemon]);
+  };
+
   return (
     <div className='App'>
       <PokemonPage
         showPokemon={showPokemon}
         searchPokemon={searchPokemon}
+        addPokemon={addPokemon}
       />
     </div>
   );
